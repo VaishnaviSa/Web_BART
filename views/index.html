@@ -1,0 +1,83 @@
+<!-- 
+
+Part#5: The Same-Origin Policy, 5 points
+The JavaScript same-origin policy (Links to an external site) aims to prevent cross-site request forgery by limiting how resources on different hosts can interact with each other. Knowing this, why is it possible for your website to load and display data from the BART API? Include your answer as a comment within the HTML markup of your created website.
+This website is accessing the BART API on the server end .Thus the server code provides endpoints to access the BART API on the same domain, and that’s why the client side code from my website can access the API using HTTP requests from the browser as they are hosted on the same domain.I am display  the data as my webpage is not requesting the data directly from BART API.Any request coming from any site is allowed to have access to the contents of the site. If Access-Control-Allow-Origin is assigned to some particular website then only that website is allowed to get the information from source website.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<title>BART</title>
+
+	<link rel="stylesheet" href="./stylesheet/page.css">
+<link href="https://fonts.googleapis.com/css?family=Harmattan" rel="stylesheet">
+
+<link rel="stylesheet" href="./stylesheet/timeTo.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	<script src="/bower_components/jquery.countdown/dist/jquery.countdown.js"></script>
+
+	<script src="./js/page.js"></script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9a-mm36UtyIZrGiJm-h9D7YikhMNDSlg&callback=loadMap"></script>
+	 
+    <script src="./js/jquery.time-to.min.js" ></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
+<script src="jquery.countdown.js"></script>
+<script src="js/jquery.countdown.js"></script>
+
+</head>
+
+<body>
+		<header id="select-div">
+			<h1>BART SCHEDULE</h1>
+
+
+			<select  class='stations' id='source'> </select>
+			<select  class='stations' id='destination'> </select>
+			
+			<input type="submit" value="SEARCH" id="go" class="submit-button">
+
+			
+		</header>
+
+		<aside id="side">
+			
+		</aside>
+
+		<h3>Remaining time until the next train:</h3>
+            <div id="getting-started"></div>
+
+		<section id="table-container">
+			<h3>Show Table</h3>
+			 <table id="table" > </table> 
+<div id="map" style="width: 50%; height: 300px; margin-top: 11px;"></div>	
+		</section>
+
+	<footer>
+		
+		<h2>COEN 315</h2>
+		
+	</footer>
+
+<script>
+window.onload = function() {
+	if (typeof(Storage) !== "undefined") {
+		if (localStorage.visitcount) {
+			localStorage.visitcount = Number(localStorage.visitcount) + 1
+		} else {
+			localStorage.visitcount = 1;
+		}
+		let msg = "Welcome!! You have visited this BART SCHEDULE " + localStorage.visitcount + " times."
+		alert(msg);
+	}
+}
+</script>
+
+</body>
+</html>
